@@ -1,0 +1,6 @@
+pillow
+paddlepaddle
+paddleocr>=2.0.1
+requests
+psutil
+fuzzywuzzy
