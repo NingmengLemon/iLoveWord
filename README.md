@@ -46,6 +46,8 @@ The author is not liable for any outcomes resulting from the use of this script.
    >
    > ![After Cropping](images/sample_en2zh.png)
 
+`available_region` 变量是一个四元组，内容为裁剪区域的矩形像素坐标表示 `(left, top, right, bottom)`，一般将`left`设为`0`，将`right`设为屏幕宽度，然后调整`top`和`bottom`就好。坐标从图片右上角起算，向下y坐标递增，向右x坐标递增，参见 [pillow 文档](https://pillow.readthedocs.io/en/stable/reference/Image.html#PIL.Image.Image.crop)
+
 ### 使用
 
 1. 连接设备，在虚拟环境中运行 `main.py`
@@ -62,9 +64,11 @@ The author is not liable for any outcomes resulting from the use of this script.
 
 如果使用了一些难以辨认的字体，正确率可能大幅下降
 
+如果裁剪后的识别区域有肉眼可见的无关文本，正确率必然大幅下降
+
 ## 效果
 
-平均3分钟左右完成，80分以上
+配置无误的话平均3分钟左右完成，80分以上
 
 ## 杂项
 

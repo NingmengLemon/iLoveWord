@@ -58,7 +58,6 @@ def is_chi(text: str) -> bool:
 def match(data):
     """
     data: 来自 ocr 函数的返回值
-    返回匹配项在data中的索引, 失败返回-1
     """
     # 如果不出意外的话, data的第一项应该是题干
     main = purify_text(data[0][1])
@@ -72,7 +71,7 @@ def match(data):
         pre_trans = [purify_text(i[1]) for i in options]
         try:
             trans_res = [i["translation"] for i in sdict.query_batch(pre_trans)]
-        except:
+        except Exception:
             return None
         print(repr(pre_trans), "->", repr(trans_res))
         mreses = []
@@ -89,7 +88,7 @@ def match(data):
         # trans_main = trans_baidu.translate(main,'en','zh')["trans_result"][0]['dst']
         try:
             trans_main = sdict.query(main)["translation"]
-        except:
+        except Exception:
             return None
         print(repr(main), "->", repr(trans_main))
         mreses = []
