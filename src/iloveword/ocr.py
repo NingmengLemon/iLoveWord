@@ -1,7 +1,7 @@
-# import pytesseract
+import logging
+
 from paddleocr import PaddleOCR
 from PIL import Image
-import logging
 
 pocr = PaddleOCR(
     use_angle_cls=True, lang="ch"
@@ -12,14 +12,7 @@ def cut_img(file: str, coor: tuple):  # coor=(left, upper, right, lower)
     with Image.open(file) as img:
         cut = img.crop(coor)
         cut.save(file)
-        logging.info('Cut file "{}", {}->{}'.format(file, img.size, coor))
-
-
-# def ocr_pyt(imgfile:str,langs:str='chi_sim',config:str='') -> str:
-#     img = Image.open(imgfile)
-#     text = pytesseract.image_to_string(img,lang=langs,config=config)
-#     logging.info(f'OCR "{imgfile}", lang={langs}')
-#     return text
+        logging.info('Cut file "%s", %s->%s', file, img.size, coor)
 
 
 def ocr_paddle(img_path: str = "./screenshot.png") -> list:
@@ -34,6 +27,3 @@ def ocr_paddle(img_path: str = "./screenshot.png") -> list:
     """
     result = pocr.ocr(img_path, cls=True)
     return result[0]
-
-
-print()

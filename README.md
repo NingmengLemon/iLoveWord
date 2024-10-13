@@ -74,6 +74,4 @@ The author is not liable for any outcomes resulting from the use of this script.
 
 TODO:
 
-- 重构我写的这托史
-- 换用效率更高的安卓自动化库（计划使用 uiautomator2）
 - 使程序更加简单易用
